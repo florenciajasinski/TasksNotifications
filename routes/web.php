@@ -16,7 +16,7 @@ Route::get('/jobs', function (){
     return view('jobs.index', ['jobs' => Job::with('employer')->paginate(3)]);
 });
 
-Route::post(
+
 
 Route::get('/jobs/create', static fn() => view('jobs.create'));
 
