@@ -4,9 +4,17 @@
     </x-slot>
 
     @if($job)
-        <h2>{{ $job['title'] }}</h2>
-        <p>{{ $job['location'] ?? '' }}</p>
+        <h2>{{ $job->title }}</h2>
+        <p>{{ $job->location ?? '' }}</p>
     @else
         <p>Job not found.</p>
+    @endif
+
+    @if($job)
+        <p class="mt-4">
+            <a href="/jobs/{{ $job->id }}/edit" class="text-indigo-600 hover:text-indigo-900">
+                Edit Job
+            </a>
+        </p>
     @endif
 </x-layout>

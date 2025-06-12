@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * 
+ *
  * @property int                          $id
  * @property string                       $name
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Lightit\Shared\App\Job> $jobs
  * @property-read int|null $jobs_count
- *
  * @method static \Database\Factories\EmployerFactory                    factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer newQuery()
@@ -23,7 +24,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer whereUpdatedAt($value)
- *
  * @mixin \Eloquent
  */
 class Employer extends Model

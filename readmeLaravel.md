@@ -16,3 +16,5 @@ Psy Shell v0.12.8 (PHP 8.4.7 — cli) by Justin Hileman
 crear model y factory:  php artisan make:model Employeer -f
 Crear model, factory y migration: php artisan make:Model Tag -mf
 
+Route::get('/jobs/{job}', [JobController::class, 'show']);
+ACA SI QUIERO OTRA COSA QUE NO SEA EL ID LO TENGO QUE ESPECIFICAR. job:name. por defecto busca en la tabla de la base de datos el id cuando se le pasa el modelo completo

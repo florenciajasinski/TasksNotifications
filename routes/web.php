@@ -1,34 +1,31 @@
 <?php
 
 declare(strict_types=1);
-
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Arr;
-use Lightit\Shared\App\Exceptions\Http\InvalidActionException;
-use Lightit\Shared\App\Job;
+use Lightit\Shared\App\Http\Controllers\RegisterController;
+use Lightit\Shared\App\Http\Controllers\JobController;
 
-Route::get('invalid', static fn() => throw new InvalidActionException("Is not valid"));
+
 
 Route::get('/', static fn() => view('welcome'));
 
+Route::get('/jobs', [JobController::class, 'index']);
 
-Route::get('/jobs', function (){
-    return view('jobs.index', ['jobs' => Job::with('employer')->paginate(3)]);
-});
-
-
+Route::post('/jobs', [JobController::class, 'create']);
 
 Route::get('/jobs/create', static fn() => view('jobs.create'));
 
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find((int)$id);
-    return view('jobs.show', ['job' => $job]);
+Route::get('/jobs/{job}', [JobController::class, 'show']);
 
-});
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
 
+Route::patch('/jobs/{job}', [JobController::class, 'update']);
 
-Route::get('/contact', static fn() => view('contact'));
+Route::delete('/jobs/{job}', [JobController::class, 'destroy']);
 
+Route::view('/contact', 'contact');
+
+//Route::get('/register', [RegisterController::class, 'create']);
 
 Route::get('/login', static fn() => view('welcome'))->name('login');
 
