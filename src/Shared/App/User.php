@@ -4,22 +4,19 @@ declare(strict_types=1);
 
 namespace Lightit\Shared\App;
 
-use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Database\Factories\UserFactory;
 use Illuminate\Notifications\Notifiable;
 
 /**
- *
- *
- * @property int $id
- * @property string $first_name
- * @property string $last_name
- * @property string $email
- * @property string $password
+ * @property int                          $id
+ * @property string                       $first_name
+ * @property string                       $last_name
+ * @property string                       $email
+ * @property string                       $password
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User query()
@@ -30,16 +27,20 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
+ *
  * @property string $remember_token
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
+ *
+ * @method static \Database\Factories\UserFactory                    factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
+ *
  * @mixin \Eloquent
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $table = 'users';
 
@@ -61,7 +62,6 @@ class User extends Authenticatable
 
     public function employer()
     {
-        return $this->hasOne(Employer::class);
+        return $this->belongsTo(Employer::class, 'employer_id');
     }
-
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Lightit\Shared\App\Http\Controllers;
 
-use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Lightit\Shared\App\Job;
-use Lightit\Shared\App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Lightit\Shared\App\Job;
+use Lightit\Shared\App\Mail\JobMail;
 
 class JobController extends Controller
 {
@@ -28,17 +28,19 @@ class JobController extends Controller
         ]);
 
 
-        $employer = Auth::user()->employer;
+        //$employer = Auth::user()->employer;
 
-        if (!$employer) {
-            abort(403, 'No employer associated with your user.');
-        }
+        //if (! $employer) {
+          //  abort(403, 'No employer associated with your user.');
+        //}
 
-        Job::create([
+        $job = Job::create([
             'title'       => request('title'),
             'location'    => request('location'),
-            'employer_id' => $employer->id,
+            'employer_id' => 1,
         ]);
+
+        Mail::to($job->employer->user)->send(new JobMail($job));
 
         return redirect('/jobs');
     }
@@ -50,7 +52,6 @@ class JobController extends Controller
 
     public function show(Job $job)
     {
-
         return view('jobs.show', [
             'job' => $job,
         ]);
@@ -58,7 +59,6 @@ class JobController extends Controller
 
     public function edit(Job $job)
     {
-
         return view('jobs.edit', [
             'job' => $job,
         ]);
@@ -82,6 +82,7 @@ class JobController extends Controller
     public function destroy(Job $job)
     {
         $job->delete();
+
         return redirect('/jobs');
     }
 }

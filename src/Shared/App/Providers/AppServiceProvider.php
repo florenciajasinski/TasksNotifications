@@ -12,15 +12,14 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Lightit\Security\Domain\Actions\PreventDebugInProductionAction;
-use Illuminate\Support\Facades\Gate;
 use Lightit\Shared\App\Job;
 use Lightit\Shared\App\Policies\JobPolicy;
-
 
 class AppServiceProvider extends ServiceProvider
 {

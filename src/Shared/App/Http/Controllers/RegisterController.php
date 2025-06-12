@@ -18,7 +18,6 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -33,7 +32,7 @@ class RegisterController extends Controller
             'password' => $request->input('password'),
         ]);
         Auth::login($user);
-        return redirect('/login');
 
+        return redirect('/login');
     }
 }
