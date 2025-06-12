@@ -10,18 +10,19 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('employers', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Lightit\Shared\App\User::class)
-                ->constrained('users')
-                ->cascadeOnDelete();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('email');
+            $table->string('password');
+            $table->string('remember_token')->nullable();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('employers');
+        Schema::dropIfExists('users');
     }
 };

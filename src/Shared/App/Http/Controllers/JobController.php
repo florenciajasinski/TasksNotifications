@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace Lightit\Shared\App\Http\Controllers;
 
+use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Lightit\Shared\App\Job;
+use Lightit\Shared\App\User;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -17,24 +20,37 @@ class JobController extends Controller
         ]);
     }
 
-    public function create()
+    public function store()
     {
         request()->validate([
             'title'    => 'required|string|max:255',
             'location' => 'required|string|max:255',
         ]);
 
+
+        $employer = Auth::user()->employer;
+
+        if (!$employer) {
+            abort(403, 'No employer associated with your user.');
+        }
+
         Job::create([
             'title'       => request('title'),
             'location'    => request('location'),
-            'employer_id' => 1,
+            'employer_id' => $employer->id,
         ]);
 
         return redirect('/jobs');
     }
 
+    public function create()
+    {
+        return view('jobs.create');
+    }
+
     public function show(Job $job)
     {
+
         return view('jobs.show', [
             'job' => $job,
         ]);
@@ -42,6 +58,7 @@ class JobController extends Controller
 
     public function edit(Job $job)
     {
+
         return view('jobs.edit', [
             'job' => $job,
         ]);

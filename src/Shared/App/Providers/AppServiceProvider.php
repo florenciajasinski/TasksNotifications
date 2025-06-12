@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Lightit\Security\Domain\Actions\PreventDebugInProductionAction;
+use Illuminate\Support\Facades\Gate;
+use Lightit\Shared\App\Job;
+use Lightit\Shared\App\Policies\JobPolicy;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,14 +39,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        DB::prohibitDestructiveCommands($this->app->isProduction());
+        DB::prohibitDestructiveCommands($this->app->environment('production'));
 
         PreventDebugInProductionAction::execute(
-            isProduction: $this->app->isProduction(),
+            isProduction: $this->app->environment('production'),
             isDebug: (bool) config('app.debug')
         );
 
-        Model::shouldBeStrict(! $this->app->isProduction());
+        Model::shouldBeStrict(! $this->app->environment('production'));
 
         RateLimiter::for('api', function (Request $request) {
             /** @var int $rateLimiter */
@@ -63,5 +67,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
+
+        Gate::policy(Job::class, JobPolicy::class);
     }
 }

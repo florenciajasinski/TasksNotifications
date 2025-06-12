@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * 
+ *
  *
  * @property int                          $id
  * @property string                       $name
@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer whereUpdatedAt($value)
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employer whereUserId($value)
  * @mixin \Eloquent
  */
 class Employer extends Model
@@ -37,5 +39,10 @@ class Employer extends Model
     public function jobs()
     {
         return $this->hasMany(Job::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
