@@ -16,7 +16,7 @@ Route::prefix('jobs')->group(function () {
     Route::get('/', [JobController::class, 'index']);
     Route::get('/create', [JobController::class, 'create'])->middleware('auth');
     Route::post('/', [JobController::class, 'store'])->middleware('auth');
-    Route::get('/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'can:edit,job']);
+    Route::get('/{job}/edit', [JobController::class, 'edit'])->middleware('auth')->can('edit', 'job');
     Route::patch('/{job}', [JobController::class, 'update'])->middleware('auth');
     Route::delete('/{job}', [JobController::class, 'destroy'])->middleware('auth');
     Route::get('/{job}', [JobController::class, 'show']);

@@ -1,6 +1,6 @@
 
-
-
 <p>
-    <a href="{{url ('/jobs/'.$job->id)}}">Job Title: {{$job->title}}</a><br>
+    <strong>Title:</strong> {{ $job->title }}<br>
+    <strong>Location:</strong> {{ $job->location }}<br>
 </p>
+

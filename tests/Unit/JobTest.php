@@ -16,7 +16,7 @@ it('it belongs to an employer', function () {
 
 it('it has many tags', function () {
     $job = Job::factory()->create();
-    $tag = Tag::create(['name' => 'Laravel']);
+    $tag = Tag::create(['name' => 'example']);
 
     $job->tags()->attach($tag->id);
 
