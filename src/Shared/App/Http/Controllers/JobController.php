@@ -28,19 +28,19 @@ class JobController extends Controller
         ]);
 
 
-        //$employer = Auth::user()->employer;
+        $employer = Auth::user()->employer;
 
-        //if (! $employer) {
-          //  abort(403, 'No employer associated with your user.');
-        //}
+        if (! $employer) {
+            abort(403, 'No employer associated with your user.');
+        }
 
         $job = Job::create([
             'title'       => request('title'),
             'location'    => request('location'),
-            'employer_id' => 1,
+            'employer_id' => $employer->id,
         ]);
 
-        Mail::to($job->employer->user)->send(new JobMail($job));
+        Mail::to($job->employer->user)->queue(new JobMail($job));
 
         return redirect('/jobs');
     }

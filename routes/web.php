@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Lightit\Shared\App\Http\Controllers\RegisterController;
 use Lightit\Shared\App\Http\Controllers\JobController;
 use Lightit\Shared\App\Http\Controllers\SessionController;
+use Lightit\Shared\App\Policies\JobPolicy;
 use Lightit\Shared\App\Policies;
 
 
@@ -20,6 +21,7 @@ Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 
 
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware('auth');
+// ->can(JobPolicy::class, 'edit');
 
 
 Route::patch('/jobs/{job}', [JobController::class, 'update'])->middleware('auth');

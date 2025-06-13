@@ -10,14 +10,9 @@ use Lightit\Shared\App\User;
 
 class JobPolicy
 {
-    public function edit($user, Job $job): bool|Response
+    public function edit(User $user, Job $job): bool|Response
     {
-        $sharedUser = User::find($user->id);
-        if (! $sharedUser) {
-            return Response::deny('User not found.');
-        }
-
-        return $job->employer->user->is($sharedUser)
+        return $job->employer->user->is($user)
             ? Response::allow()
             : Response::deny('You do not own this job.');
     }

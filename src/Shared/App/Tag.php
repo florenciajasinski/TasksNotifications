@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * 
+ *
  * @property int                          $id
  * @property string                       $name
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag query()
@@ -20,12 +21,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereUpdatedAt($value)
- *
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Lightit\Shared\App\Job> $jobs
  * @property-read int|null $jobs_count
- *
  * @method static \Database\Factories\TagFactory factory($count = null, $state = [])
- *
  * @mixin \Eloquent
  */
 class Tag extends Model
