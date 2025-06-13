@@ -20,8 +20,8 @@ Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth')
 Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 
 
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware('auth');
-// ->can(JobPolicy::class, 'edit');
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'can:edit,job']);
+
 
 
 Route::patch('/jobs/{job}', [JobController::class, 'update'])->middleware('auth');

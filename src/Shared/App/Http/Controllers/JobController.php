@@ -76,7 +76,7 @@ class JobController extends Controller
             'location' => $request->input('location'),
         ]);
 
-        return redirect('/jobs/' . $job->id);
+        return redirect('/jobs');
     }
 
     public function destroy(Job $job)
