@@ -12,25 +12,15 @@ use Lightit\Shared\App\Policies;
 Route::get('/', static fn() => view('welcome'));
 
 
-Route::get('/jobs', [JobController::class, 'index']);
-
-
-Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
-
-Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
-
-
-Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'can:edit,job']);
-
-
-
-Route::patch('/jobs/{job}', [JobController::class, 'update'])->middleware('auth');
-
-
-Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->middleware('auth');
-
-
-Route::get('/jobs/{job}', [JobController::class, 'show']);
+Route::prefix('jobs')->group(function () {
+    Route::get('/', [JobController::class, 'index']);
+    Route::get('/create', [JobController::class, 'create'])->middleware('auth');
+    Route::post('/', [JobController::class, 'store'])->middleware('auth');
+    Route::get('/{job}/edit', [JobController::class, 'edit'])->middleware(['auth', 'can:edit,job']);
+    Route::patch('/{job}', [JobController::class, 'update'])->middleware('auth');
+    Route::delete('/{job}', [JobController::class, 'destroy'])->middleware('auth');
+    Route::get('/{job}', [JobController::class, 'show']);
+});
 
 
 Route::view('/contact', 'contact');
