@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string                       $name
  * @property string                       $email
  * @property \Carbon\CarbonImmutable|null $created_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Lightit\Backoffice\Employee\Domain\Models\Task> $tasks
- * @property-read int|null $tasks_count
+ * @property \Carbon\CarbonImmutable|null $updated_at
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newQuery()
@@ -25,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
+
 class Employee extends Model
 {
     protected $table = 'employees';
