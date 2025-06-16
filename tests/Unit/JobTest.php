@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 namespace Tests\Unit;
-use \Lightit\Shared\App\Employer;
+
+use Lightit\Shared\App\Employer;
 use Lightit\Shared\App\Job;
 use Lightit\Shared\App\Tag;
 
@@ -11,7 +12,6 @@ it('it belongs to an employer', function () {
     $job = Job::factory()->create(['employer_id' => $employer->id]);
 
     expect($job->employer)->is($employer)->toBeTrue();
-
 });
 
 it('it has many tags', function () {
@@ -22,4 +22,3 @@ it('it has many tags', function () {
 
     expect($job->tags()->count())->toBe(1);
 });
-

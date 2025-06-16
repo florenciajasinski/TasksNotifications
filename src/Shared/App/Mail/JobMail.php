@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lightit\Shared\App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
@@ -15,11 +14,11 @@ use Lightit\Shared\App\Job;
 
 class JobMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public function __construct(public Job $job)
     {
-
     }
 
     public function envelope(): Envelope

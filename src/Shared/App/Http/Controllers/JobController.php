@@ -24,7 +24,7 @@ class JobController extends Controller
     {
         request()->validate([
             'title'    => ['required'],
-            'location' =>  ['required']
+            'location' =>  ['required'],
         ]);
 
 
@@ -68,7 +68,7 @@ class JobController extends Controller
     {
         $request->validate([
             'title'    => ['required'],
-            'location' => ['required']
+            'location' => ['required'],
         ]);
 
         $job->update([
