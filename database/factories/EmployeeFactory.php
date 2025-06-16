@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 
 /**
- * @extends Factory<\Lightit\Model>
+ * @extends Factory<\Lightit\Backoffice\Employee\Domain\Models\Employee>
  */
 class EmployeeFactory extends Factory
 {
 
+    /**
+     * @var class-string<\Lightit\Backoffice\Employee\Domain\Models\Employee>
+     */
     protected $model = Employee::class;
     public function definition(): array
     {
