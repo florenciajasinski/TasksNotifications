@@ -21,4 +21,3 @@ class EmployeeResource extends JsonResource
         ];
     }
 }
-
