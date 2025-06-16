@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Employee\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Lightit\Backoffice\Employee\Domain\Models\Task;
 
 /**
  * @property int                          $id
@@ -13,7 +12,6 @@ use Lightit\Backoffice\Employee\Domain\Models\Task;
  * @property string                       $email
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Lightit\Backoffice\Employee\Domain\Models\Task> $tasks
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Task> $tasks
  * @property-read int|null $tasks_count
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newModelQuery()
