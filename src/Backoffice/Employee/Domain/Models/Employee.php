@@ -38,9 +38,10 @@ class Employee extends Model
     protected $table = 'employees';
 
     protected $guarded = ['id'];
-/**
-* @return HasMany<Task, $this>
-*/
+
+    /**
+     * @return HasMany<Task, $this>
+    */
 
     public function tasks(): HasMany
     {
