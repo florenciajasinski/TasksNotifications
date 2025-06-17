@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 
 /**
- * 
- *
  * @property int                          $id
  * @property string                       $title
  * @property string                       $description
@@ -18,6 +16,7 @@ use Lightit\Backoffice\Employee\Domain\Models\Employee;
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property-read Employee|null $employee
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task query()
@@ -28,6 +27,7 @@ use Lightit\Backoffice\Employee\Domain\Models\Employee;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Task extends Model
