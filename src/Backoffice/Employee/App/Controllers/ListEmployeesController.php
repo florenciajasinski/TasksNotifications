@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 use Lightit\Backoffice\Employee\App\Resources\EmployeeResource;
 use Lightit\Backoffice\Employee\Domain\Actions\ListEmployeesAction;
 
-class ListEmployeesController extends Controller
+class ListEmployeesController
 {
     public function __invoke(
         ListEmployeesAction $listEmployeesAction,

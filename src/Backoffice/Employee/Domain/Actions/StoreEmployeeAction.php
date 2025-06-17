@@ -17,7 +17,6 @@ class StoreEmployeeAction
         $employee->email = $employeeDto->email;
 
         $employee->save();
-
         return $employee;
     }
 }

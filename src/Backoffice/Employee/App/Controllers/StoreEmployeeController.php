@@ -10,7 +10,7 @@ use Lightit\Backoffice\Employee\App\Requests\CreateEmployeeRequest;
 use Lightit\Backoffice\Employee\App\Resources\EmployeeResource;
 use Lightit\Backoffice\Employee\Domain\Actions\StoreEmployeeAction;
 
-class StoreEmployeeController extends Controller
+class StoreEmployeeController
 {
     public function __invoke(
         CreateEmployeeRequest $storeEmployeeController,

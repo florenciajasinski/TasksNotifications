@@ -20,8 +20,6 @@ class CreateEmployeeRequest extends FormRequest
      */
     public function rules(): array
     {
-        /** @var Employee|null $employee */
-        $employee = $this->route('employee');
 
         return [
             self::NAME => ['required', 'string', 'min:4', 'max:80'],
@@ -31,7 +29,6 @@ class CreateEmployeeRequest extends FormRequest
                 Rule::email()
                     ->strict(),
                 Rule::unique(Employee::class, 'email')
-                    ->ignore($employee?->id),
             ],
         ];
     }
