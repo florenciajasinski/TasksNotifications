@@ -12,8 +12,10 @@ use Lightit\Backoffice\Employee\Domain\Actions\StoreEmployeeAction;
 
 class StoreEmployeeController extends Controller
 {
-    public function __invoke(CreateEmployeeRequest $storeEmployeeController, StoreEmployeeAction $storeEmployeeAction): JsonResponse
-    {
+    public function __invoke(
+        CreateEmployeeRequest $storeEmployeeController,
+        StoreEmployeeAction $storeEmployeeAction,
+    ): JsonResponse {
         $employee = $storeEmployeeAction->execute($storeEmployeeController->toDto());
 
         return EmployeeResource::make($employee)
