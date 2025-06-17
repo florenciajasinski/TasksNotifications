@@ -33,9 +33,4 @@ class Employee extends Model
     protected $table = 'employees';
 
     protected $guarded = ['id'];
-
-    public function tasks()
-    {
-        return $this->hasMany(Task::class);
-    }
 }
