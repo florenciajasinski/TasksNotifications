@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Employee\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
 /**
@@ -37,13 +38,11 @@ class Employee extends Model
     protected $table = 'employees';
 
     protected $guarded = ['id'];
+/**
+* @return HasMany<Task, $this>
+*/
 
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class);
-    }
-
-    public function tasks()
+    public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
     }

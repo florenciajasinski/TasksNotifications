@@ -10,8 +10,8 @@ class TaskDto
         public readonly string $title,
         public readonly string $description,
         public readonly string $status,
-        public readonly string $employeeId,
-        public readonly string|null $taskId,
+        public readonly int $employeeId,
+        public readonly int|null $taskId,
     ) {
     }
 }

@@ -7,6 +7,11 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 
+
+/**
+* @extends Factory<Employee>
+*/
+
 class EmployeeFactory extends Factory
 {
     /**

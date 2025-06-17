@@ -41,8 +41,8 @@ class UpsertTaskRequest extends FormRequest
             title: $this->string(self::TITLE)->toString(),
             description: $this->string(self::DESCRIPTION)->toString(),
             status: $this->string(self::STATUS)->toString(),
-            employeeId: $this->string(self::EMPLOYEE_ID)->toString(),
-            taskId: $this->string(self::TASK_ID)->toString()
+            employeeId: $this->integer(self::EMPLOYEE_ID),
+            taskId: $this->integer(self::TASK_ID)
         );
     }
 }

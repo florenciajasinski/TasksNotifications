@@ -6,6 +6,13 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Lightit\Backoffice\Task\Domain\Models\Task;
+use Lightit\Backoffice\Employee\Domain\Models\Employee;
+use Database\Factories\EmployeeFactory;
+
+/**
+* @extends Factory<Task>
+*/
+
 
 class TaskFactory extends Factory
 {
@@ -19,7 +26,7 @@ class TaskFactory extends Factory
             'title' => fake()->title(),
             'description' => fake()->text(),
             'status' => 'pending',
-            'employee_id' => EmployeeFactory::factory()->create()
+            'employee_id' => EmployeeFactory::new()->create()
         ];
     }
 }
