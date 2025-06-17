@@ -9,12 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
 /**
+ *
+ *
  * @property int                          $id
  * @property string                       $name
  * @property string                       $email
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee query()
@@ -23,11 +24,6 @@ use Lightit\Backoffice\Task\Domain\Models\Task;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereUpdatedAt($value)
- *
- * @property-read Employee|null $employee
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Task> $tasks
- * @property-read int|null $tasks_count
- *
  * @mixin \Eloquent
  */
 
