@@ -12,9 +12,6 @@ class UpdateTaskAction
     public function execute(TaskDto $taskDto): Task
     {
         $task = $taskDto->taskId ? Task::query()->find($taskDto->taskId) : new Task();
-        logger($task);
-
-
         $task->title = $taskDto->title;
         $task->description = $taskDto->description;
         $task->status = $taskDto->status;

@@ -11,7 +11,9 @@ class TaskFactory extends Factory
 {
 
     /**
-     * @var class-string<\Lightit\Backoffice\Task\Domain\Models\Task>
+     * The name of the factory's corresponding model.
+     *
+     * @var string
      */
     protected $model = Task::class;
     public function definition(): array
@@ -20,7 +22,7 @@ class TaskFactory extends Factory
             'title' => fake()->title(),
             'description' => fake()->text(),
             'status' => 'pending',
-            'employee_id' => EmployeeFactory::new()->create()->id
+            'employee_id' => EmployeeFactory::factory()->create()
         ];
     }
 }

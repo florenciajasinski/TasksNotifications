@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Task\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 
 /**
@@ -35,8 +36,7 @@ class Task extends Model
     protected $table = 'tasks';
 
     protected $guarded = ['id'];
-
-    public function employee()
+    public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
     }

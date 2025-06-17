@@ -31,7 +31,7 @@ class UpsertTaskRequest extends FormRequest
             self::DESCRIPTION => ['required', 'string', 'min:2'],
             self::STATUS => ['required', Rule::enum(TaskStatus::class)],
             self::EMPLOYEE_ID => ['required', 'exists:employees,id'],
-            self::TASK_ID => ['nullable', 'exists:tasks,id'],
+            self::TASK_ID => ['sometimes', 'exists:tasks,id'],
         ];
     }
 
