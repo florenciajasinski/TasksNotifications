@@ -6,52 +6,43 @@ namespace Lightit\Backoffice\Task\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Illuminate\Validation\Rules\Password;
+use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
+use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
 class UpsertTaskRequest extends FormRequest
 {
-    public const NAME = 'name';
+    public const TITLE = 'title';
 
-    public const EMAIL = 'email_address';
+    public const DESCRIPTION = 'description';
 
-    public const PASSWORD = 'password';
+    public const STATUS = 'status';
+
+    public const EMPLOYEE_ID = 'employee_id';
+
+    public const TASK_ID = 'id';
 
     /**
      * @return array<string, mixed>
      */
     public function rules(): array
     {
-        /** @var User|null $user */
-        $user = $this->route('user');
-
         return [
-            self::NAME => ['required', 'string', 'min:4', 'max:80'],
-            self::EMAIL => [
-                'required',
-                'max:100',
-                Rule::email()
-                    ->strict(),
-                Rule::unique(User::class, 'email')
-                    ->ignore($user?->id),
-            ],
-            self::PASSWORD => [
-                'required',
-                Password::min(8)
-                    ->max(64)
-                    ->letters()
-                    ->numbers()
-                    ->uncompromised(),
-                'confirmed',
-            ],
+            self::TITLE => ['required', 'string', 'min:2', 'max:80'],
+            self::DESCRIPTION => ['required', 'string', 'min:2'],
+            self::STATUS => ['required', Rule::enum(TaskStatus::class)],
+            self::EMPLOYEE_ID => ['required', 'exists:employees,id'],
+            self::TASK_ID => ['nullable', 'exists:tasks,id'],
         ];
     }
 
-    public function toDto(): UserDto
+    public function toDto(): TaskDto
     {
-        return new UserDto(
-            name: $this->string(self::NAME)->toString(),
-            emailAddress: $this->string(self::EMAIL)->toString(),
-            password: $this->string(self::PASSWORD)->toString(),
+        return new TaskDto(
+            title: $this->string(self::TITLE)->toString(),
+            description: $this->string(self::DESCRIPTION)->toString(),
+            status: $this->string(self::STATUS)->toString(),
+            employeeId: $this->string(self::EMPLOYEE_ID)->toString(),
+            taskId: $this->string(self::TASK_ID)->toString()
         );
     }
 }

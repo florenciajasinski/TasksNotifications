@@ -11,6 +11,7 @@ class TaskDto
         public readonly string $description,
         public readonly string $status,
         public readonly string $employeeId,
+        public readonly string|null $taskId,
     ) {
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Employee\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Lightit\Backoffice\Task\Domain\Models\Task;
 
 /**
  *
@@ -24,6 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereUpdatedAt($value)
  *
+ * @property-read Employee|null $employee
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Task> $tasks
+ * @property-read int|null $tasks_count
+ *
  * @mixin \Eloquent
  */
 
@@ -32,4 +37,14 @@ class Employee extends Model
     protected $table = 'employees';
 
     protected $guarded = ['id'];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

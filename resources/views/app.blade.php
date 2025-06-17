@@ -63,6 +63,9 @@
         <div id="employee-component" class="component-container active">
             @include('components.employee-form')
         </div>
+        <div id="task-component" class="component-container">
+            @include('components.task-form', ['employees' => $employees ?? []])
+        </div>
     </div>
 
     <script>

@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Lightit\Backoffice\Employee\App\Resources\EmployeeResource;
 
+/**
+ * @property-read \Lightit\Backoffice\Task\Domain\Models\Task $resource
+ */
 class TaskResource extends JsonResource
 {
-    /**
-     * @return array{id: int, title: string, description: string, status: string, employee: EmployeeResource|null}
-     */
     public function toArray(Request $request): array
     {
         return [

@@ -5,19 +5,17 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Task\App\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Illuminate\Routing\Controller;
 use Lightit\Backoffice\Task\App\Resources\TaskResource;
+use Lightit\Backoffice\Task\Domain\Actions\ListTasksAction;
 
-use Lightit\Backoffice\Task\Domain\Actions\ListTaskAction;
-
-class ListTasksController extends Controller
+class ListTasksController
 {
     public function __invoke(
-        ListTaskAction $action,
+        ListTasksAction $listTasksAction,
     ): JsonResponse {
-        $users = $action->execute();
+        $tasks = $listTasksAction->execute();
 
-        return TaskResource::collection($users)
+        return TaskResource::collection($tasks)
             ->response();
     }
 }
