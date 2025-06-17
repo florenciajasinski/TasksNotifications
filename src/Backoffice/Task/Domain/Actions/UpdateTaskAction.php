@@ -13,8 +13,8 @@ class UpdateTaskAction
     {
         if ($taskDto->taskId) {
             $task = Task::query()->find($taskDto->taskId);
-            if (!$task) {
-                throw new \Exception("Task not found");
+            if (! $task) {
+                throw new \Exception('Task not found');
             }
         } else {
             $task = new Task();
