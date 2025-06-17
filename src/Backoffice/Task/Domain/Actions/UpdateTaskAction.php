@@ -9,11 +9,16 @@ use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class UpdateTaskAction
 {
-    public function execute(Task $task, TaskDto $taskDto): Task
+    public function execute(TaskDto $taskDto): Task
     {
-        $task->name = $taskDto->title;
-        $task->email = $taskDto->description;
-        $task->password = $taskDto->employeeId;
+        $task = $taskDto->taskId ? Task::query()->find($taskDto->taskId) : new Task();
+        logger($task);
+
+
+        $task->title = $taskDto->title;
+        $task->description = $taskDto->description;
+        $task->status = $taskDto->status;
+        $task->employee_id = $taskDto->employeeId;
 
         $task->save();
 
