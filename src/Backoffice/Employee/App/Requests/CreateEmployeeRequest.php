@@ -20,7 +20,6 @@ class CreateEmployeeRequest extends FormRequest
      */
     public function rules(): array
     {
-
         return [
             self::NAME => ['required', 'string', 'min:4', 'max:80'],
             self::EMAIL => [
@@ -28,7 +27,7 @@ class CreateEmployeeRequest extends FormRequest
                 'max:100',
                 Rule::email()
                     ->strict(),
-                Rule::unique(Employee::class, 'email')
+                Rule::unique(Employee::class, 'email'),
             ],
         ];
     }

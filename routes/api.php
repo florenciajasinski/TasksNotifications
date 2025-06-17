@@ -9,7 +9,7 @@ use Lightit\Backoffice\Employee\App\Controllers\StoreEmployeeController;
 
 
 Route::prefix('employees')
-    ->group( function (){
+    ->group( function (): void{
         Route::post('/', StoreEmployeeController::class)->name('employees');
         Route::get('/', ListEmployeesController::class);
     });
