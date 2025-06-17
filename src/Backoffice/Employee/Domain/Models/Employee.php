@@ -7,12 +7,13 @@ namespace Lightit\Backoffice\Employee\Domain\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ *
+ *
  * @property int                          $id
  * @property string                       $name
  * @property string                       $email
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee query()
