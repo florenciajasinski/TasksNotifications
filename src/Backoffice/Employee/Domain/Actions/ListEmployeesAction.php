@@ -9,7 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class ListEmployeeAction
+class ListEmployeesAction
 {
     /**
      * @return LengthAwarePaginator<int, Model>

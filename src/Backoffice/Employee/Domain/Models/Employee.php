@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Employee\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Lightit\Backoffice\Task\Domain\Models\Task;
 
 /**
+ *
+ *
  * @property int                          $id
  * @property string                       $name
  * @property string                       $email
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee query()
@@ -21,7 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereUpdatedAt($value)
- *
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Task> $tasks
+ * @property-read int|null $tasks_count
  * @mixin \Eloquent
  */
 
@@ -29,5 +32,10 @@ class Employee extends Model
 {
     protected $table = 'employees';
 
-    protected $fillable = ['name', 'email'];
+    protected $guarded = ['id'];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }

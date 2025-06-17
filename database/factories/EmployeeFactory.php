@@ -7,6 +7,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 
+
 /**
  * @extends Factory<\Lightit\Backoffice\Employee\Domain\Models\Employee>
  */
@@ -20,8 +21,8 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company(),
-            'email' => $this->faker->unique()->companyEmail(),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
         ];
     }
 }
