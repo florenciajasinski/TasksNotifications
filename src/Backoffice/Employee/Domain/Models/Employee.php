@@ -22,8 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereUpdatedAt($value)
  *
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Task> $tasks
- * @property-read int|null $tasks_count
  *
  * @mixin \Eloquent
  */
