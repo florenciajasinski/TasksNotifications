@@ -36,6 +36,10 @@ class Task extends Model
     protected $table = 'tasks';
 
     protected $guarded = ['id'];
+
+    /**
+     * @return BelongsTo<Employee, Task>
+     */
     public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);

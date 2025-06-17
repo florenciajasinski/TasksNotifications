@@ -11,7 +11,15 @@ class UpdateTaskAction
 {
     public function execute(TaskDto $taskDto): Task
     {
-        $task = $taskDto->taskId ? Task::query()->find($taskDto->taskId) : new Task();
+        if ($taskDto->taskId) {
+            $task = Task::query()->find($taskDto->taskId);
+            if (!$task) {
+                throw new \Exception("Task not found");
+            }
+        } else {
+            $task = new Task();
+        }
+
         $task->title = $taskDto->title;
         $task->description = $taskDto->description;
         $task->status = $taskDto->status;
