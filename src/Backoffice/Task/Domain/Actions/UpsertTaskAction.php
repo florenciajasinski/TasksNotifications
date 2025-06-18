@@ -7,7 +7,7 @@ namespace Lightit\Backoffice\Task\Domain\Actions;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
-class UpdateTaskAction
+class UpsertTaskAction
 {
     public function execute(TaskDto $taskDto): Task
     {
