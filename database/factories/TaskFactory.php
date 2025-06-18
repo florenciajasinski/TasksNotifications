@@ -26,7 +26,7 @@ class TaskFactory extends Factory
             'title' => fake()->title(),
             'description' => fake()->text(),
             'status' => 'pending',
-            'employee_id' => EmployeeFactory::new()->create()
+            'employee_id' => EmployeeFactory::new()
         ];
     }
 }

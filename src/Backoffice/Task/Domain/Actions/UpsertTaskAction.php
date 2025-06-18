@@ -11,14 +11,8 @@ class UpsertTaskAction
 {
     public function execute(TaskDto $taskDto): Task
     {
-        if ($taskDto->taskId) {
-            $task = Task::query()->find($taskDto->taskId);
-            if (! $task) {
-                throw new \Exception('Task not found');
-            }
-        } else {
-            $task = new Task();
-        }
+        /** @var Task $task */
+        $task = Task::query()->find($taskDto->taskId) ?? new Task();
 
         $task->title = $taskDto->title;
         $task->description = $taskDto->description;

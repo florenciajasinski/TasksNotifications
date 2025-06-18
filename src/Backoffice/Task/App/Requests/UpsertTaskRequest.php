@@ -8,6 +8,8 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
+use Lightit\Backoffice\Employee\Domain\Models\Employee;
+use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class UpsertTaskRequest extends FormRequest
 {
@@ -30,8 +32,8 @@ class UpsertTaskRequest extends FormRequest
             self::TITLE => ['required', 'string', 'min:2', 'max:80'],
             self::DESCRIPTION => ['required', 'string', 'min:2'],
             self::STATUS => ['required', Rule::enum(TaskStatus::class)],
-            self::EMPLOYEE_ID => ['required', 'exists:employees,id'],
-            self::TASK_ID => ['sometimes', 'exists:tasks,id'],
+            self::EMPLOYEE_ID => ['required', Rule::exists(Employee::class, 'id')],
+            self::TASK_ID => ['sometimes', Rule::exists(Task::class, 'id')],
         ];
     }
 
