@@ -24,7 +24,7 @@ class TaskAssigmentNotifications extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Task has been assign to you',
+            subject: 'Task has been assign to you | ' . $this->task->created_at->format('Y-m-d'),
             from: 'DoNotReply@lightit.io'
         );
     }

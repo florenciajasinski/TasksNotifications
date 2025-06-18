@@ -27,9 +27,6 @@ class EventServiceProvider extends ServiceProvider
         TestEvent::class => [
             TestListener::class,
         ],
-        TaskAssigned::class => [
-            SendTaskAssignedNotification::class,
-        ],
     ];
 
     /**
@@ -37,10 +34,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Event::listen(
-            TaskAssigned::class,
-            SendTaskAssignedNotification::class
-        );
     }
 
     public function register(): void

@@ -27,10 +27,6 @@ class UpdateTaskAction
         $task->employee_id = $taskDto->employeeId;
 
         $task->save();
-
-        TaskAssigned::dispatch($task);
-
-
         return $task;
     }
 }

@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Lightit\Backoffice\Task\Domain\Models\Task;
 use Lightit\Backoffice\Task\Events\TaskAssigned;
 use Lightit\Backoffice\Task\Listeners\SendTaskAssignedNotification;
 use Lightit\Security\Domain\Actions\PreventDebugInProductionAction;
+use Lightit\Shared\App\Providers\TelescopeServiceProvider;
+use Lightit\Backoffice\Task\Observers\TasksObserver;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -67,9 +71,6 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(TelescopeServiceProvider::class);
         }
 
-        Event::listen(
-            TaskAssigned::class,
-            SendTaskAssignedNotification::class
-        );
+        Task::observe(TasksObserver::class);
     }
 }
