@@ -7,8 +7,4 @@ use Lightit\Shared\App\Exceptions\Http\InvalidActionException;
 
 Route::get('invalid', static fn() => throw new InvalidActionException("Is not valid"));
 
-Route::get('/', static fn() => view('welcome'));
-
-Route::get('/login', static fn() => view('welcome'))->name('login');
-
-
+Route::get('/', static fn() => view('app'));
