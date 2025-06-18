@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 use Lightit\Backoffice\Employee\Domain\DataTransferObject\EmployeeDto;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 
-class CreateEmployeeRequest extends FormRequest
+class StoreEmployeeRequest extends FormRequest
 {
     public const NAME = 'name';
 

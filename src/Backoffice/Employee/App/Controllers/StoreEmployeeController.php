@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Employee\App\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Lightit\Backoffice\Employee\App\Requests\CreateEmployeeRequest;
+use Lightit\Backoffice\Employee\App\Requests\StoreEmployeeRequest;
 use Lightit\Backoffice\Employee\App\Resources\EmployeeResource;
 use Lightit\Backoffice\Employee\Domain\Actions\StoreEmployeeAction;
 
 class StoreEmployeeController
 {
     public function __invoke(
-        CreateEmployeeRequest $storeEmployeeController,
+        StoreEmployeeRequest $storeEmployeeRequest,
         StoreEmployeeAction $storeEmployeeAction,
     ): JsonResponse {
-        $employee = $storeEmployeeAction->execute($storeEmployeeController->toDto());
+        $employee = $storeEmployeeAction->execute($storeEmployeeRequest->toDto());
 
         return EmployeeResource::make($employee)
             ->response()
