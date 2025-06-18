@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Task\Domain\Actions;
 
-use Illuminate\Support\Facades\Mail;
-use Lightit\Backoffice\Employee\App\Notifications\TaskAssigmentNotifications;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 use Lightit\Backoffice\Task\Events\TaskAssigned;
