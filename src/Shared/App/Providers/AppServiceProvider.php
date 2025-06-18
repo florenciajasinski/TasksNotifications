@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Lightit\Shared\App\Providers;
 
 use Carbon\CarbonImmutable;
-use Illuminate\Support\Facades\Event;
-use Lightit\Backoffice\Task\Events\TaskAssigned;
-use Lightit\Backoffice\Task\Listeners\SendTaskAssignedNotification;
 use Dedoc\Scramble\Scramble;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
@@ -15,10 +12,13 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Lightit\Backoffice\Task\Events\TaskAssigned;
+use Lightit\Backoffice\Task\Listeners\SendTaskAssignedNotification;
 use Lightit\Security\Domain\Actions\PreventDebugInProductionAction;
 
 class AppServiceProvider extends ServiceProvider
@@ -68,7 +68,8 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Event::listen(
-        TaskAssigned::class,
-        SendTaskAssignedNotification::class);
+            TaskAssigned::class,
+            SendTaskAssignedNotification::class
+        );
     }
 }
