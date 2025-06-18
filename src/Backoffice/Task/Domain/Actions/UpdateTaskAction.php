@@ -6,7 +6,6 @@ namespace Lightit\Backoffice\Task\Domain\Actions;
 
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
 use Lightit\Backoffice\Task\Domain\Models\Task;
-use Lightit\Backoffice\Task\Events\TaskAssigned;
 
 class UpdateTaskAction
 {
@@ -14,8 +13,8 @@ class UpdateTaskAction
     {
         if ($taskDto->taskId) {
             $task = Task::query()->find($taskDto->taskId);
-            if (!$task) {
-                throw new \Exception("Task not found");
+            if (! $task) {
+                throw new \Exception('Task not found');
             }
         } else {
             $task = new Task();
@@ -27,6 +26,7 @@ class UpdateTaskAction
         $task->employee_id = $taskDto->employeeId;
 
         $task->save();
+
         return $task;
     }
 }

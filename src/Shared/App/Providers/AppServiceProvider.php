@@ -12,18 +12,13 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Lightit\Backoffice\Task\Domain\Models\Task;
-use Lightit\Backoffice\Task\Events\TaskAssigned;
-use Lightit\Backoffice\Task\Listeners\SendTaskAssignedNotification;
-use Lightit\Security\Domain\Actions\PreventDebugInProductionAction;
-use Lightit\Shared\App\Providers\TelescopeServiceProvider;
 use Lightit\Backoffice\Task\Observers\TasksObserver;
-
+use Lightit\Security\Domain\Actions\PreventDebugInProductionAction;
 
 class AppServiceProvider extends ServiceProvider
 {
