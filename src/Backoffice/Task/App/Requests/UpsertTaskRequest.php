@@ -42,7 +42,7 @@ class UpsertTaskRequest extends FormRequest
         return new TaskDto(
             title: $this->string(self::TITLE)->toString(),
             description: $this->string(self::DESCRIPTION)->toString(),
-            status: $this->enum(self::STATUS, TaskStatus::class) ?? TaskStatus::from($this->input(self::STATUS)),
+            status: $this->enum(self::STATUS, TaskStatus::class) ?? TaskStatus::from($this->string(self::STATUS)->toString()),
             employeeId: $this->integer(self::EMPLOYEE_ID),
             taskId: $this->integer(self::TASK_ID)
         );
