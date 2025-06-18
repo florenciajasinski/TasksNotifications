@@ -33,8 +33,8 @@ class TaskAssigmentNotifications extends Mailable
     {
         return new Content(
             view: 'mail.assigned-task',
-            with: ['task' => $this->task]);
-
+            with: ['task' => $this->task]
+        );
     }
 
     /**

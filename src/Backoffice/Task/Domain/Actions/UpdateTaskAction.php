@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Task\Domain\Actions;
 
-use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
-use Lightit\Backoffice\Task\Domain\Models\Task;
 use Illuminate\Support\Facades\Mail;
 use Lightit\Backoffice\Employee\App\Notifications\TaskAssigmentNotifications;
-
+use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
+use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class UpdateTaskAction
 {
@@ -35,5 +34,4 @@ class UpdateTaskAction
 
         return $task;
     }
-
-    }
+}
