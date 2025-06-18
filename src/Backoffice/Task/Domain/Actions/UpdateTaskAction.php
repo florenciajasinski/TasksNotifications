@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Lightit\Backoffice\Employee\App\Notifications\TaskAssigmentNotifications;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
 use Lightit\Backoffice\Task\Domain\Models\Task;
+use Lightit\Backoffice\Task\Events\TaskAssigned;
 
 class UpdateTaskAction
 {
@@ -30,7 +31,7 @@ class UpdateTaskAction
         $task->save();
 
 
-        Mail::to($task->employee->email)->queue(new TaskAssigmentNotifications($task));
+        event(new TaskAssigned($task));
 
         return $task;
     }

@@ -7,6 +7,8 @@ namespace Lightit\Shared\App\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Lightit\Backoffice\Task\Events\TaskAssigned;
+use Lightit\Backoffice\Task\Listeners\SendTaskAssignedNotification;
 use Lightit\Shared\App\Events\TestEvent;
 use Lightit\Shared\App\Listeners\TestListener;
 
@@ -24,7 +26,11 @@ class EventServiceProvider extends ServiceProvider
         TestEvent::class => [
             TestListener::class,
         ],
+        TaskAssigned::class => [
+            SendTaskAssignedNotification::class,
+        ],
     ];
+
 
     /**
      * Register any events for your application.
