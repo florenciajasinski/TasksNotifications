@@ -19,8 +19,3 @@ class DatabaseSeeder extends Seeder
         EmployeeFactory::new()->createMany(12);
     }
 }
-
-
-
-
-
