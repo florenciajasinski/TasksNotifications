@@ -28,8 +28,8 @@ class UpdateTaskAction
 
         $task->save();
 
+        TaskAssigned::dispatch($task);
 
-        event(new TaskAssigned($task));
 
         return $task;
     }

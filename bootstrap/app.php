@@ -20,7 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withEvents(discover: [
-        __DIR__.'/../src/Shared/App/Listeners',
+        __DIR__.'/../src/Backoffice/Task/Listeners'
     ])
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->use([

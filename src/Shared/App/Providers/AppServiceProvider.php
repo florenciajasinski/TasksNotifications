@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Lightit\Shared\App\Providers;
 
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Event;
+use Lightit\Backoffice\Task\Events\TaskAssigned;
+use Lightit\Backoffice\Task\Listeners\SendTaskAssignedNotification;
 use Dedoc\Scramble\Scramble;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
@@ -63,5 +66,9 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
+
+        Event::listen(
+        TaskAssigned::class,
+        SendTaskAssignedNotification::class);
     }
 }
