@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
 /**
- *
- *
  * @property int                          $id
  * @property string                       $name
  * @property string                       $email
