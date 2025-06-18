@@ -16,7 +16,7 @@ class UpsertTaskAction
 
         $task->title = $taskDto->title;
         $task->description = $taskDto->description;
-        $task->status = $taskDto->status;
+        $task->status = $taskDto->status->value;
         $task->employee_id = $taskDto->employeeId;
 
         $task->save();
