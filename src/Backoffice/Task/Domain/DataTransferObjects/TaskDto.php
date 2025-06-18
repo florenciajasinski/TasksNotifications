@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 namespace Lightit\Backoffice\Task\Domain\DataTransferObjects;
+
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
+
 class TaskDto
 {
     public function __construct(
