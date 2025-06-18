@@ -6,6 +6,9 @@ namespace Lightit\Backoffice\Task\Domain\Actions;
 
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDto;
 use Lightit\Backoffice\Task\Domain\Models\Task;
+use Illuminate\Support\Facades\Mail;
+use Lightit\Backoffice\Employee\App\Notifications\TaskAssigmentNotifications;
+
 
 class UpdateTaskAction
 {
@@ -27,6 +30,10 @@ class UpdateTaskAction
 
         $task->save();
 
+
+        Mail::to($task->employee->email)->queue(new TaskAssigmentNotifications($task));
+
         return $task;
     }
-}
+
+    }
