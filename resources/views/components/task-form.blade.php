@@ -90,7 +90,7 @@
     function loadTasks(select) {
         if (tasksLoaded) return;
 
-        fetch('/tasks', {
+        fetch('/api/tasks', {
             headers: {
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest'
@@ -121,7 +121,7 @@
             return;
         }
 
-        fetch(`/tasks/${taskId}`, {
+        fetch(`/api/tasks/${taskId}`, {
             headers: {
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest'
