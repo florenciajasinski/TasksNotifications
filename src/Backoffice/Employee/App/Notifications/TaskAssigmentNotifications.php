@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Employee\App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Console\View\Components\Task as ComponentsTask;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
@@ -27,7 +26,7 @@ class TaskAssigmentNotifications extends Mailable
     {
         return new Envelope(
             subject: 'Task has been assign to you',
-            from: Config::string("mail.from.address")
+            from: Config::string('mail.from.address')
         );
     }
 
