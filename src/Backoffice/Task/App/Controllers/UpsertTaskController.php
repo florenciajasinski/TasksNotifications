@@ -11,9 +11,9 @@ use Lightit\Backoffice\Task\Domain\Actions\UpsertTaskAction;
 
 class UpsertTaskController
 {
-    public function __invoke(UpsertTaskRequest $request, UpsertTaskAction $updateTaskAction): JsonResponse
+    public function __invoke(UpsertTaskRequest $request, UpsertTaskAction $upsertTaskAction): JsonResponse
     {
-        $task = $updateTaskAction->execute($request->toDto());
+        $task = $upsertTaskAction->execute($request->toDto());
 
         return TaskResource::make($task)
             ->response()
