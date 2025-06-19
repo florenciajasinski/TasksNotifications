@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Employee\App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Console\View\Components\Task as ComponentsTask;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Config;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class TaskAssigmentNotifications extends Mailable
@@ -25,7 +27,7 @@ class TaskAssigmentNotifications extends Mailable
     {
         return new Envelope(
             subject: 'Task has been assign to you',
-            from: 'DoNotReply@lightit.io'
+            from: Config::string("mail.from.address")
         );
     }
 
