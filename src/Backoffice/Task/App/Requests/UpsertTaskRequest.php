@@ -39,6 +39,7 @@ class UpsertTaskRequest extends FormRequest
 
     public function toDto(): TaskDto
     {
+        /** @var TaskStatus $status */
         $status = $this->enum(self::STATUS, TaskStatus::class);
 
         return new TaskDto(
