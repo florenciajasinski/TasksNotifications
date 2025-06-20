@@ -16,8 +16,6 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Lightit\Backoffice\Task\Domain\Models\Task;
-use Lightit\Backoffice\Task\Observers\TasksObserver;
 use Lightit\Security\Domain\Actions\PreventDebugInProductionAction;
 
 class AppServiceProvider extends ServiceProvider
