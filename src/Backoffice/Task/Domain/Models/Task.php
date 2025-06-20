@@ -14,7 +14,7 @@ use Lightit\Backoffice\Task\Observers\TasksObserver;
  * @property int                          $id
  * @property string                       $title
  * @property string                       $description
- * @property string                       $status
+ * @property TaskStatus                   $status
  * @property int|null                     $employee_id
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
