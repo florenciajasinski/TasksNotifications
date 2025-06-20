@@ -10,6 +10,7 @@ use Lightit\Backoffice\Employee\Domain\Models\Employee;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 use Lightit\Backoffice\Task\Observers\TasksObserver;
 
+
 /**
  * @property int                          $id
  * @property string                       $title
