@@ -22,5 +22,3 @@ Route::prefix('tasks')
         Route::get('/', ListTasksController::class);
         Route::get('/{task}', GetTaskController::class);
     });
-
-

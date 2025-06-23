@@ -7,6 +7,7 @@ namespace Lightit\Shared\App\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 use Lightit\Shared\App\Events\TestEvent;
 use Lightit\Shared\App\Listeners\TestListener;
 

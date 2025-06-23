@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
+use Lightit\Backoffice\Task\Observers\TasksObserver;
+
 
 /**
  * @property int                          $id
  * @property string                       $title
  * @property string                       $description
- * @property string                       $status
+ * @property TaskStatus                   $status
  * @property int|null                     $employee_id
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
@@ -51,5 +53,10 @@ class Task extends Model
     public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
+    }
+
+    public static function boot(): void
+    {
+        static::observe(TasksObserver::class);
     }
 }
